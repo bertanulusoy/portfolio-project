@@ -30,7 +30,7 @@
         <div class="mr-auto"></div>
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">about</a>
@@ -78,7 +78,7 @@
         </div>
       </div>
       <div class="col-lg-6 col-md-12 banner-image">
-        <img src="{% static 'benim.png' %}" height=300></img>
+        <!--<img src="{% static 'benim.png' %}" height=250 width=250></img>-->
         <img src="{% static 'img/banner/banner-image.png' %}" alt="banner-img" class="img-fluid">
       </div>
     </div>
@@ -313,7 +313,20 @@
 
 
       {% for job in jobs.all %}
-        {{ job.summary }}
+          <div class="col-lg-4 col-md-6 col-sm-12 element-item latest">
+            <div class="our-project">
+            <a href="{% url 'detail' job.id %}"> 
+              <div class="img">
+                <img src="{{ job.image.url }}" alt="portfolio-1" />
+                <!--<img src="{% static 'img/portfolio/p1.jpg' %}" alt="portfolio-1" />-->
+              </div>
+              <div class="title py-4">
+                <h4 class="text-upper">{{ job.summary }}</h4>
+                <span class="text-secondary">Latest, Portfolio</span>
+              </div>
+            </a>
+            </div>
+          </div>
       {% endfor %}
 
       <div class="col-lg-4 col-md-6 col-sm-12 element-item latest">
